@@ -8,7 +8,17 @@ namespace Shark
     {
         public static void Main(string[] args)
         {
-          
+            Course[] courses = { new Course(1), new Course(2), new Course(3), new Course(4) };
+            Student[] students = { new Student("Сидоров", "Иван", courses[0]) };
+            Teacher[] teachers = { new Teacher("Резкий", "Вадим") };
+            Discipline[] disciplines = { new Discipline("Изо", teachers[0], students, courses[0].NumberOfCourse) };
+            
+            students[0].GetInfo();
+            Console.WriteLine();
+            teachers[0].GetInfo();
+            Console.WriteLine();
+            disciplines[0].GetInfo();
+            
         }
     }
 
@@ -27,41 +37,25 @@ namespace Shark
     public class Student : User
     {
         public Course Course;
-        public Discipline[] Disciplines;
-        public List<string> StDisciplines;
 
-        public Student(string firstName, string lastName, Course course, Discipline[] disciplines)
+        public Student(string firstName, string lastName, Course course)
             : base(firstName, lastName)
         {
             Course = course;
-
-            for (int i = 0; i < disciplines.Length; i++) 
-            {
-                if (Disciplines[i].NumberOfCourse == course.NumberOfCourse)
-                {
-                    StDisciplines.Add(Disciplines[i].Name);
-                }
-            }
         }
 
         public void GetInfo()
         {
-            Console.WriteLine($"\nФамилия: {FirstName}\nИмя: {LastName}\nКурс: {Course}\nДисциплины: {Disciplines}");
+            Console.WriteLine($"\nФамилия: {FirstName}\nИмя: {LastName}\nКурс: {Course.NumberOfCourse}");
         }
     }
 
     public class Teacher : User
     {
-        public Discipline Discipline;
-
-        public Teacher(string firstName, string lastName, Discipline discipline) : base(firstName, lastName)
-        {
-            Discipline = discipline;
-        }
-        
+        public Teacher(string firstName, string lastName) : base(firstName, lastName) { }
         public void GetInfo()
         {
-            Console.WriteLine($"Фамилия: {FirstName}\nИмя: {LastName}\nДисциплина: {Discipline}");
+            Console.WriteLine($"Фамилия: {FirstName}\nИмя: {LastName}");
         }
     }
 
@@ -69,11 +63,12 @@ namespace Shark
     {
         public string Name;
         public Teacher Teacher;
-        public Student[] Students;
         public int AllStudents = 0;
 
-        public Discipline(string name, Teacher teacher, int allStudents,Student[] students,int numberOfCourse) : base(numberOfCourse)
+        public Discipline(string name, Teacher teacher, Student[] students, int numberOfCourse) : base(numberOfCourse)
         {
+            Name = name;
+            Teacher = teacher;
             for (int i = 0; i < students.Length; i++)
             {
                 if (students[i].Course.NumberOfCourse == numberOfCourse)
@@ -85,8 +80,7 @@ namespace Shark
         
         public void GetInfo()
         {
-            Console.WriteLine($"Преподаватель: {Teacher}\nКол-во студентов{AllStudents}");
-
+            Console.WriteLine($"Название дисциплины: {Name}\nПреподаватель: {Teacher.FirstName} {Teacher.LastName}\nКол-во студентов: {AllStudents}");
         }
     }
 
