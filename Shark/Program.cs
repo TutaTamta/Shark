@@ -9,15 +9,8 @@ namespace Shark
         public static void Main(string[] args)
         {
             Course[] courses = { new Course(1), new Course(2), new Course(3), new Course(4) };
-            Student[] students = { new Student("Сидоров", "Иван", courses[0]) };
-            Teacher[] teachers = { new Teacher("Резкий", "Вадим") };
-            Discipline[] disciplines = { new Discipline("Изо", teachers[0], students, courses[0].NumberOfCourse) };
+            List<Student> students = new List<Student>();
             
-            students[0].GetInfo();
-            Console.WriteLine();
-            teachers[0].GetInfo();
-            Console.WriteLine();
-            disciplines[0].GetInfo();
             
         }
     }
@@ -65,11 +58,11 @@ namespace Shark
         public Teacher Teacher;
         public int AllStudents = 0;
 
-        public Discipline(string name, Teacher teacher, Student[] students, int numberOfCourse) : base(numberOfCourse)
+        public Discipline(string name, Teacher teacher, List<Student> students, int numberOfCourse) : base(numberOfCourse)
         {
             Name = name;
             Teacher = teacher;
-            for (int i = 0; i < students.Length; i++)
+            for (int i = 0; i < students.Count; i++)
             {
                 if (students[i].Course.NumberOfCourse == numberOfCourse)
                 {
