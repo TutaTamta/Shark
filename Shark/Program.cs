@@ -20,7 +20,6 @@ namespace Shark
             students.Add(new Student("Аксенов", "Роман", courses[3], courses[3].NumberOfCourse*100+4));
             students.Add(new Student("Воробьев", "Эмиль", courses[0], courses[0].NumberOfCourse*100+1));
             
-            //groups.Add(new Group(101, courses[0], students));
             for (var i = 1; i < 5; i++)
             {
                 groups.Add(new Group(i*100+1, courses[i-1], students));
@@ -47,7 +46,7 @@ namespace Shark
             {
                 Console.Clear();
                 Console.WriteLine("Выбирете команду:");
-                Console.Write("1 - Студенты\n2 - Преподаватели\n3 - Дисциплина\n4 - Группы\n0 - Выход из программы\n");
+                Console.Write("1 - Студенты\n2 - Преподаватели\n3 - Дисциплина\n4 - Группы\n5 - Получить информацию по ФИ\n0 - Выход из программы\n");
                 Console.Write("Команда: ");
                 var choice = Convert.ToInt32(Console.ReadLine());
                 
@@ -95,11 +94,6 @@ namespace Shark
                                 }
 
                                 var lastItem = students.LastOrDefault();
-                                /*var right = false;
-                                foreach (var gr in groups)
-                                {
-                                    right = gr.NumberOfGroup == whichGroup; // break or continue
-                                }*/
 
                                 if (lastItem != null && lastItem.LastName == surname && lastItem.FirstName == name && lastItem.Course.NumberOfCourse == whichCourse && lastItem.NumberOfGroup == whichGroup)
                                 {
@@ -260,6 +254,29 @@ namespace Shark
                         }
                         break;
                     }
+                    case 5:
+                    {
+                        Console.Write("Введите фамилию и имя: ");
+                        var name = Console.ReadLine();
+                        string[] words = name.Split(' ');
+
+                        foreach (var stu in students)
+                        {
+                            if ((words[0] == stu.LastName && words[1] == stu.FirstName) || (words[0] == stu.FirstName && words[1] == stu.LastName))
+                            {
+                                stu.GetStatus();
+                            }
+                        }
+                        
+                        foreach (var tea in teachers)
+                        {
+                            if (words[0] == tea.LastName && words[1] == tea.FirstName || words[0] == tea.FirstName && words[1] == tea.LastName)
+                            {
+                                tea.GetStatus();
+                            }
+                        }
+                        break;
+                    }
                     case 0:
                     {
                         working = false;
@@ -283,7 +300,7 @@ namespace Shark
         }
     }
 
-    public class User
+    public abstract class User
     {
         public readonly string LastName;
         public readonly string FirstName;
@@ -293,6 +310,13 @@ namespace Shark
             FirstName = firstName;
             LastName = lastName;
         }
+
+        public virtual void GetInfo()
+        {
+            Console.WriteLine($"\nФамилия: {LastName}\nИмя: {FirstName}");
+        }
+
+        public abstract void GetStatus();
     }
 
     public class Student : User
@@ -368,19 +392,26 @@ namespace Shark
             }
         }
 
-        public void GetInfo()
+        public override void GetInfo()
         {
-            Console.WriteLine($"\nФамилия: {LastName}\nИмя: {FirstName}\nКурс: {Course.NumberOfCourse}\nГруппа: {NumberOfGroup}");
+            base.GetInfo();
+            Console.WriteLine($"Курс: {Course.NumberOfCourse}\nГруппа: {NumberOfGroup}");
+            Console.WriteLine();
+        }
+
+        public override void GetStatus()
+        {
+            Console.WriteLine("Это студент");
         }
     }
 
     public class Teacher : User
     {
         public Teacher(string lastName, string firstName) : base(lastName, firstName) { }
-        public void GetInfo()
+
+        public override void GetStatus()
         {
-            Console.WriteLine($"Фамилия: {LastName}\nИмя: {FirstName}");
-            Console.WriteLine();
+            Console.WriteLine("Это преподаватель");
         }
     }
 
