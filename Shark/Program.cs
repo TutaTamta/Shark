@@ -190,7 +190,7 @@ namespace Shark
                                 Console.Write("Введите название дисциплины: ");
                                 var nameDisc = Console.ReadLine();
                                 Console.WriteLine("Выберите преподавателя:");
-                                for (int i = 0; i < teachers.Count; i++)
+                                for (var i = 0; i < teachers.Count; i++)
                                 {
                                     Console.WriteLine($"{i + 1} - {teachers[i].LastName} {teachers[i].FirstName}");
                                 }
@@ -232,15 +232,273 @@ namespace Shark
                         {
                             case 1:
                             {
-                                Console.WriteLine("Выбирете номер группы:");
-                                Console.Write("Группа: ");
-                                var groupeNumber = Convert.ToInt32(Console.ReadLine());
-
-                                foreach (var gr in groups)
+                                Console.Clear();
+                                Console.WriteLine("1 - первый курс\n2 - второй курс\n3 - третий курс\n4 - четвёртый курс");
+                                Console.Write("Выбирете курс: ");
+                                var whichCourse = Convert.ToInt32(Console.ReadLine());
+                                switch (whichCourse)
                                 {
-                                    if (gr.NumberOfGroup == groupeNumber)
+                                    case 1:
                                     {
-                                        gr.GetInfo();
+                                        Console.Clear();
+                                        Console.WriteLine("1 - 101\n2 - 102\n3 - 103\n4 - 104");
+                                        Console.Write("Выбирете группу: ");
+                                        var whichGroup = Convert.ToInt32(Console.ReadLine());
+
+                                        switch (whichGroup)
+                                        {
+                                            case 1:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 101)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                            case 2:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 102)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                            case 3:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 103)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                            case 4:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 104)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            default:
+                                            {
+                                                Console.WriteLine("Ошибка: неизвестная группа!");
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                    case 2:
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("1 - 201\n2 - 202\n3 - 203\n4 - 204");
+                                        Console.Write("Выбирете группу: ");
+                                        var whichGroup = Convert.ToInt32(Console.ReadLine());
+
+                                        switch (whichGroup)
+                                        {
+                                            case 1:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 201)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 2:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 202)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 3:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 203)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 4:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 204)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            default:
+                                            {
+                                                Console.WriteLine("Ошибка: неизвестная группа!");
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                    case 3:
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("1 - 301\n2 - 302\n3 - 303\n4 - 304");
+                                        Console.Write("Выбирете группу: ");
+                                        var whichGroup = Convert.ToInt32(Console.ReadLine());
+
+                                        switch (whichGroup)
+                                        {
+                                            case 1:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 301)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 2:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 302)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 3:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 303)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 4:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 304)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                            default:
+                                            {
+                                                Console.WriteLine("Ошибка: неизвестная группа!");
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                    case 4:
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("1 - 401\n2 - 402\n3 - 403\n4 - 404");
+                                        Console.Write("Выбирете группу: ");
+                                        var whichGroup = Convert.ToInt32(Console.ReadLine());
+                                        Console.WriteLine();
+
+                                        switch (whichGroup)
+                                        {
+                                            case 1:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 401)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 2:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 402)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 3:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 403)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            case 4:
+                                            {
+                                                foreach (var gr in groups)
+                                                {
+                                                    if (gr.NumberOfGroup == 404)
+                                                    {
+                                                        gr.GetInfo();
+                                                    }
+                                                }
+                                                
+                                                break;
+                                            }
+                                            default:
+                                            {
+                                                Console.WriteLine("Ошибка: неизвестная группа!");
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                    default:
+                                    {
+                                        Console.WriteLine("Ошибка: неизветсный курс!");
+                                        break;
                                     }
                                 }
                                 break;
